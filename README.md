@@ -95,4 +95,4 @@
  ## Media Examples
  _Setup a zone with an arbitrary space (using the additionalHeight parameter), retrieve all players within the zone at frequent intervals, and apply or remove a forcefield accordingly. This example also generates 2000 random parts as a visual representation of additionalHeight._
  
-![](Media/Safe Zones 1.gif)
+![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%201.gif)
