@@ -97,21 +97,25 @@
  ### Safe Zone (1)
  Setup a zone with an arbitrary space (using the `additionalHeight` parameter), retrieve all players within the zone at frequent intervals, and apply or remove a forcefield accordingly. This example also generates 2000 random parts as a visual representation of `additionalHeight`.  
  ![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%201.gif)  
+	
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Safe Zone (2)
 Detect and apply a forcefield to players within an uncancollided red zone using the `playerAdded` and `playerRemoving` events.  
 ![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%202.gif)  
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Coin Spawner
 Randomly generate coins a few studs above any surface within the zone.  
 ![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Coins.gif)  
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Voting Pads
 Utilise zones to determine the amount of players on a particular pad.  
 ![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Vote.gif)
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Zone
@@ -121,28 +125,137 @@ Utilise zones to determine the amount of players on a particular pad.
 Constructs a new zone where `group` is an instance (such as a Model or Folder) containing parts to represent the zone, and `additionalHeight`, a number defining how many studs to extend the zone upwards, defaulting to `0`.
 
 ## Methods
-### update
-`zone:update()`
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### getPlayersInRegion
-`local players = zone:getPlayersInRegion()`
-Returns an array of players within the zone's region.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### getPlayer
-`local hitpart, intersection = zone:getPlayer(player)
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### getPlayers
-`local players = zone:getPlayers()`
-Returns an array of players within the zone.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### initLoop
-`zone:initLoop(interval)`
-Initiates a loop which calls `getPlayers()` every x second, defaults to `0.5`.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### initClientLoop()
-`zone:initClientLoop(interval)
-Initiates a loop which calls `zone:getPlayer(localPlayer)` every x second, defaults to `0.5`.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### endLoop
-`zone:endLoop()`
-Cancels any loop created with `zone:initLoop()`.
+### update  
+`zone:update()`  
+Reconstructs the region and clusters forming the zone. Zones are dynamic (they listen for changes in children, such as the adding or removing of a part, and the resizing and positioning of these children), therefore will update automatically for you.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### getPlayersInRegion  
+`local players = zone:getPlayersInRegion()`  
+Returns an array of players within the zone's region.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### getPlayer  
+`local hitpart, intersection = zone:getPlayer(player)`  
+If within the zone, returns the group part the player is standing on or within (a `BasePart`) and the intersection point (a `Vector3`), otherwise `false`.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### getPlayers  
+`local players = zone:getPlayers()`  
+Returns an array of players within the zone.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### initLoop  
+`zone:initLoop(interval)`  
+Initiates a loop which calls `getPlayers()` every x second, defaults to `0.5`.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### initClientLoop()  
+`zone:initClientLoop(interval)`  
+Initiates a loop which calls `zone:getPlayer(localPlayer)` every x second, defaults to `0.5`.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### endLoop  
+`zone:endLoop()`  
+Cancels any loop created with `zone:initLoop()`.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### getRandomPoint  
+`local randomCFrame, hitPart, hitIntersection = zone:getRandomPoint()`  
+Returns a random point (a `CFrame`), within the zone, along with the group part (a `BasePart`) directly below, and its intersection vector relative to the point (a `Vector3`).  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### destroy  
+`zone:destroy()`  
+Destroys all instances, connections and signals associcated with the zone, and ends any loop running.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Events  
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### playerAdded  
+`zone.playerAdded`  
+Fired when a player enters the zone.  
+```
+zone.playerAdded:Connect(function()
+	{Insert Code Here}
+end)
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### playerRemoving  
+`zone.playerRemoving`  
+Fired when a player leaves the zone.  
+```
+zone.playerRemoving:Connect(function()
+
+end)
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### updated
+`zone.updated`
+Fired when the zone updates (i.e. a group part is changed, such as its position or size, or a part is added or removed from the group).
+```
+zone.updated:Connect(function()
+
+end)
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Properties
+### autoUpdate
+`zone.autoUpdate`  
+A boolean deciding whether the zone should automatically update when its group parts change.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### respectUpdateQueue
+`zone.respectUpdateQueue`  
+A boolean that when set to `true` delays the automatic updating of the zone, preventing multiple calls within a short time period.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### group
+{read-only}  
+`zone.GroupParts`  
+An array of all BaseParts within `group`.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### clusters
+{read-only}  
+`zone.clusters`  
+An array of clusters.  
+
+***Cluster***  
+A dictionary describing a collection of touching parts within the zone.  
+
+Key | Value | Desc  
+parts | Array | A collection of touching parts that form the cluster  
+region | Region3 | A region formed from the cluster's parts.  
+volume | Int | The volume calculated from `region.Size`  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### additionalHeight  
+{read-only}  
+`zone.additionalHeight`  
+The number originally passed when constructing the zone, or 0. Describes how far to extend the zone in the global Y direction.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### region  
+{read-only}  
+A Region3 formed from `groupParts`.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### boundMin  
+{read-only}  
+`zone.boundMin`  
+A Vector3 used to form `region`, describing the zone's minimum point.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### boundMax  
+{read-only}  
+`zone.boundMax`  
+A Vector3 used to form `region`, describing the zone's maximum point.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### regionHeight  
+{read-only}  
+`zone.regionHeight`  
+A number describing the Y value difference between `boundMin` and `boundMax`.
