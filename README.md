@@ -93,6 +93,10 @@
   ```
 
  ## Media Examples
- _Setup a zone with an arbitrary space (using the additionalHeight parameter), retrieve all players within the zone at frequent intervals, and apply or remove a forcefield accordingly. This example also generates 2000 random parts as a visual representation of additionalHeight._
+ Setup a zone with an arbitrary space (using the `additionalHeight` parameter), retrieve all players within the zone at frequent intervals, and apply or remove a forcefield accordingly. This example also generates 2000 random parts as a visual representation of `additionalHeight`.
  
 ![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%201.gif)
+
+Detect and apply a forcefield to players within an uncancollided red zone using the `playerAdded` and `playerRemoving` events.
+
+![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%202.gif)
