@@ -93,10 +93,27 @@
   ```
 
  ## Media Examples
- Setup a zone with an arbitrary space (using the `additionalHeight` parameter), retrieve all players within the zone at frequent intervals, and apply or remove a forcefield accordingly. This example also generates 2000 random parts as a visual representation of `additionalHeight`.
  
-![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%201.gif)
+ ### Safe Zone (1)
+ Setup a zone with an arbitrary space (using the `additionalHeight` parameter), retrieve all players within the zone at frequent intervals, and apply or remove a forcefield accordingly. This example also generates 2000 random parts as a visual representation of `additionalHeight`.  
+ ![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%201.gif)  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Detect and apply a forcefield to players within an uncancollided red zone using the `playerAdded` and `playerRemoving` events.
+### Safe Zone (2)
+Detect and apply a forcefield to players within an uncancollided red zone using the `playerAdded` and `playerRemoving` events.  
+![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%202.gif)  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Safe%20Zones%202.gif)
+### Coin Spawner
+Randomly generate coins a few studs above any surface within the zone.  
+![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Coins.gif)  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Voting Pads
+Utilise zones to determine the amount of players on a particular pad.  
+![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Vote.gif)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Ambient Areas
+Play sounds within specific areas.  
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
