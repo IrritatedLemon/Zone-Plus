@@ -113,7 +113,3 @@ Randomly generate coins a few studs above any surface within the zone.
 Utilise zones to determine the amount of players on a particular pad.  
 ![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Vote.gif)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Ambient Areas
-Play sounds within specific areas.  
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
