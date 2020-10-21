@@ -113,3 +113,36 @@ Randomly generate coins a few studs above any surface within the zone.
 Utilise zones to determine the amount of players on a particular pad.  
 ![](https://github.com/IrritatedLemon/Zone-Plus/blob/main/Media/Vote.gif)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Zone
+## Constructors
+### new
+`local zone = Zone.new(group, additionalHeight)`
+Constructs a new zone where `group` is an instance (such as a Model or Folder) containing parts to represent the zone, and `additionalHeight`, a number defining how many studs to extend the zone upwards, defaulting to `0`.
+
+## Methods
+### update
+`zone:update()`
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### getPlayersInRegion
+`local players = zone:getPlayersInRegion()`
+Returns an array of players within the zone's region.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### getPlayer
+`local hitpart, intersection = zone:getPlayer(player)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### getPlayers
+`local players = zone:getPlayers()`
+Returns an array of players within the zone.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### initLoop
+`zone:initLoop(interval)`
+Initiates a loop which calls `getPlayers()` every x second, defaults to `0.5`.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### initClientLoop()
+`zone:initClientLoop(interval)
+Initiates a loop which calls `zone:getPlayer(localPlayer)` every x second, defaults to `0.5`.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### endLoop
+`zone:endLoop()`
+Cancels any loop created with `zone:initLoop()`.
