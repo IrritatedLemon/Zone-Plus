@@ -266,4 +266,4 @@ ___Maid and Signal by Quenty___
 ___Promise by evaera___  
 ___Repository by Irritatedlemon___  
 
-You may find me at IrritatedLemon#0015.  
+You may contact me at IrritatedLemon#0015.  
