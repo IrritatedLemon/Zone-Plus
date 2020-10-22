@@ -1,7 +1,6 @@
 # Zone+
  Open source version of Zone+  
  All source code is in the Source Code folder.  
- Repository by IrritatedLemon.  
 
  ## Installation
 
@@ -259,3 +258,10 @@ A Vector3 used to form `region`, describing the zone's maximum point.
 {read-only}  
 `zone.regionHeight`  
 A number describing the Y value difference between `boundMin` and `boundMax`.
+
+# Credits
+
+___Zone+ by ForeverHD___  
+___Maid and Signal by Quenty___  
+___Promise by evaera___  
+___Repository by Irritatedlemon___
